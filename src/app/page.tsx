@@ -1,60 +1,52 @@
-import { getLeaderboard } from './actions';
-import SubmissionForm from '../components/SubmissionForm';
-import { Trophy } from 'lucide-react';
 
-export default async function Home() {
-  const leaderboard = await getLeaderboard();
+import Link from 'next/link';
 
+export const dynamic = 'force-dynamic';
+
+export default function LandingPage() {
   return (
-    <main className="min-h-screen bg-gray-900 text-white p-8">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-          LLM Fine-Tuning Challenge
-        </h1>
+    <main className="min-h-screen bg-gray-900 text-white flex flex-col">
+      {/* Hero Section */}
+      <div className="flex-1 flex flex-col items-center justify-center text-center p-8">
+        <div className="max-w-3xl space-y-8">
+          <h1 className="text-6xl font-extrabold tracking-tight bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            Supercharge Your LLMs
+          </h1>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            Join the ultimate Fine-Tuning Challenge. Compete with top engineers, optimize your models, and climb the leaderboard.
+          </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Submission Section */}
-          <div className="bg-gray-800 p-6 rounded-xl border border-gray-700">
-            <h2 className="text-2xl font-semibold mb-4">Submit Model</h2>
-            <SubmissionForm />
+          <div className="flex gap-4 justify-center">
+            <Link
+              href="/dashboard"
+              className="bg-blue-600 hover:bg-blue-700 text-white text-lg font-bold py-3 px-8 rounded-full transition-transform hover:scale-105"
+            >
+              Get Started
+            </Link>
+            <Link
+              href="/login"
+              className="bg-gray-800 hover:bg-gray-700 text-white text-lg font-bold py-3 px-8 rounded-full border border-gray-700 transition-transform hover:scale-105"
+            >
+              Log In
+            </Link>
           </div>
+        </div>
+      </div>
 
-          {/* Leaderboard Section */}
-          <div className="bg-gray-800 p-6 rounded-xl border border-gray-700">
-            <div className="flex items-center gap-2 mb-4">
-              <Trophy className="text-yellow-400" />
-              <h2 className="text-2xl font-semibold">Leaderboard</h2>
-            </div>
-
-            <div className="overflow-hidden rounded-lg">
-              <table className="w-full text-left">
-                <thead className="bg-gray-700 text-gray-300">
-                  <tr>
-                    <th className="p-3">Rank</th>
-                    <th className="p-3">User</th>
-                    <th className="p-3 text-right">Accuracy</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-700">
-                  {leaderboard.map((entry, index) => (
-                    <tr key={entry.user_id} className="hover:bg-gray-750">
-                      <td className="p-3 font-mono text-gray-400">#{index + 1}</td>
-                      <td className="p-3 font-medium">{entry.username}</td>
-                      <td className="p-3 text-right text-green-400 font-bold">
-                        {(entry.accuracy * 100).toFixed(2)}%
-                      </td>
-                    </tr>
-                  ))}
-                  {leaderboard.length === 0 && (
-                    <tr>
-                      <td colSpan={3} className="p-4 text-center text-gray-500">
-                        No submissions yet. Be the first!
-                      </td>
-                    </tr>
-                  )}
-                </tbody>
-              </table>
-            </div>
+      {/* Features/Stats could go here */}
+      <div className="border-t border-gray-800 bg-gray-900/50 p-12">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div className="p-6">
+            <h3 className="text-4xl font-bold text-white mb-2">100+</h3>
+            <p className="text-gray-500">Models Submitted</p>
+          </div>
+          <div className="p-6">
+            <h3 className="text-4xl font-bold text-white mb-2">Top 1%</h3>
+            <p className="text-gray-500">Accuracy Goal</p>
+          </div>
+          <div className="p-6">
+            <h3 className="text-4xl font-bold text-white mb-2">24/7</h3>
+            <p className="text-gray-500">Automated Evaluation</p>
           </div>
         </div>
       </div>

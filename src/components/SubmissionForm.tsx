@@ -2,10 +2,12 @@
 
 import { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
+import { useRouter } from 'next/navigation';
 import { registerUser, createSubmissionRecord, checkSubmissionStatus } from '../app/actions';
 import axios from 'axios';
 
 export default function SubmissionForm() {
+    const router = useRouter();
     const [username, setUsername] = useState('');
     const [file, setFile] = useState<File | null>(null);
     const [status, setStatus] = useState('IDLE'); // IDLE, UPLOADING, PROCESSING, COMPLETED
@@ -51,6 +53,7 @@ export default function SubmissionForm() {
                     clearInterval(interval);
                     setStatus('COMPLETED');
                     setResult(statusData.accuracy);
+                    router.refresh();
                 } else if (statusData && statusData.status === 'FAILED') {
                     clearInterval(interval);
                     setStatus('FAILED');
