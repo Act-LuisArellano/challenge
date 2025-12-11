@@ -1,6 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
-
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -43,10 +43,9 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-
 :root {
-  --radius: 0rem; /* No rounded corners in pixel art */
+  --radius: 0rem;
+  /* No rounded corners in pixel art */
   --background: #1e1e2e;
   --foreground: #94a3b8;
   --card: #2d2d44;
@@ -80,47 +79,52 @@
 
 /* Custom Utilities */
 .font-pixel {
-    font-family: 'VT323', monospace;
+  font-family: 'VT323', monospace;
 }
 
 .image-pixelated {
-    image-rendering: pixelated;
-    image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 
 .voxel-card {
-    @apply bg-gray-900 border-2 border-gray-700;
-    box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.5);
+  @apply bg-gray-900 border-2 border-gray-700;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.5);
 }
 
 .voxel-btn {
-    @apply relative border-2 border-transparent transition-all active:translate-y-1 active:shadow-none;
-    box-shadow: 0px 4px 0px 0px rgba(0,0,0,0.3);
+  @apply relative border-2 border-transparent transition-all active:translate-y-1 active:shadow-none;
+  box-shadow: 0px 4px 0px 0px rgba(0, 0, 0, 0.3);
 }
+
 .voxel-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0px 6px 0px 0px rgba(0,0,0,0.3);
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 0px 0px rgba(0, 0, 0, 0.3);
 }
 
 /* Scrollbar customization */
 ::-webkit-scrollbar {
   width: 12px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #1e1e2e; 
+  background: #1e1e2e;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #2d2d44; 
+  background: #2d2d44;
   border: 2px solid #1e1e2e;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #3b82f6; 
+  background: #3b82f6;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
