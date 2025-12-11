@@ -62,3 +62,20 @@ export async function checkSubmissionStatus(submissionId: string) {
         client.release();
     }
 }
+
+export async function getSubmissionHistory() {
+    const client = await pool.connect();
+    try {
+        // Fetch recent submissions with their accuracy results
+        const res = await client.query(`
+            SELECT s.created_at, r.accuracy
+            FROM submissions s
+            JOIN evaluation_results r ON s.id = r.submission_id
+            ORDER BY s.created_at ASC
+            LIMIT 50
+        `);
+        return res.rows;
+    } finally {
+        client.release();
+    }
+}
