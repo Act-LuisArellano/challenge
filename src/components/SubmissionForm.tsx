@@ -72,7 +72,7 @@ export default function SubmissionForm() {
     return (
         <div className="space-y-4">
             <div>
-                <label className="block text-sm text-gray-400 mb-1">Username</label>
+                <label className="block text-sm text-gray-400 mb-1">Team-name</label>
                 <input
                     type="text"
                     value={username}

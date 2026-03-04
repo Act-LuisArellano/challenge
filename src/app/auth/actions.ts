@@ -41,11 +41,11 @@ export async function signup(formData: FormData) {
     })
 
     if (error) {
-        redirect('/signup?error=Could not authenticate user')
+        redirect(`/signup?error=${encodeURIComponent(error.message)}`)
     }
 
     revalidatePath('/', 'layout')
-    redirect('/login?message=Check email to continue sign in process')
+    redirect('/check-email')
 }
 
 export async function signout() {
